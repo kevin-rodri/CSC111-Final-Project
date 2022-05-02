@@ -1,19 +1,19 @@
 
 public class ArrayListS  {
 
-	private String[] array;
+	private double[] array;
 	private int numberOfItems;
 
 	public ArrayListS() {
-		array = new String[5];
+		array = new double[5];
 	}
 
 	
-	public void add(String item) {
+	public void add(Double item) {
 		if (numberOfItems < array.length) {
 			array[numberOfItems++] = item;
 		} else {
-			String[] arr = new String[(int) (1.5 * array.length)];
+			double[] arr = new double[(int) (1.5 * array.length)];
 			for (int i = 0; i < array.length; i++) {
 				arr[i] = array[i];
 				
@@ -24,12 +24,12 @@ public class ArrayListS  {
 	}
 
 
-	public String get(int index) {
+	public double get(int index) {
 		return array[index];
 	}
 
 	
-	public void set(int index, String item) {
+	public void set(int index, double item) {
 		array[index] = item;
 	}
 
