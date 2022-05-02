@@ -2,7 +2,7 @@
 public class test {
 
 	public static void main(String[] args) {
-		ArrayListS list = new ArrayListS();
+		ArrayListAssignment list = new ArrayListAssignment();
 		// add stuff here
 		
 		

@@ -1,19 +1,18 @@
 
-public class ArrayListS  {
-
-	private double[] array;
+public class ArrayListStudent {
+	private Student[] array;
 	private int numberOfItems;
 
-	public ArrayListS() {
-		array = new double[5];
+	public ArrayListStudent() {
+		array = new Student[5];
 	}
 
 	
-	public void add(Double item) {
+	public void add(Student item) {
 		if (numberOfItems < array.length) {
 			array[numberOfItems++] = item;
 		} else {
-			double[] arr = new double[(int) (1.5 * array.length)];
+			Student[] arr = new Student[(int) (1.5 * array.length)];
 			for (int i = 0; i < array.length; i++) {
 				arr[i] = array[i];
 				
@@ -24,12 +23,12 @@ public class ArrayListS  {
 	}
 
 
-	public double get(int index) {
+	public Student get(int index) {
 		return array[index];
 	}
 
 	
-	public void set(int index, double item) {
+	public void set(int index, Student item) {
 		array[index] = item;
 	}
 

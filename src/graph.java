@@ -7,9 +7,9 @@ import org.math.plot.Plot2DPanel;
 public class graph {
 	public static void main(String[] args) {
 		// create your PlotPanel (you can use it as a JPanel)
-		
-		ArrayListS xNums = new ArrayListS();
-		ArrayListS yNums = new ArrayListS();
+
+		ArrayListAssignment xNums = new ArrayListAssignment();
+		ArrayListAssignment yNums = new ArrayListAssignment();
 		Plot2DPanel plot = new Plot2DPanel();
 		File file = new File("./grades.txt");
 		Scanner fileInput = null;
@@ -47,6 +47,7 @@ public class graph {
 			frame.setSize(600, 600);
 			frame.setContentPane(plot);
 			frame.setVisible(true);
+			
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
