@@ -29,10 +29,54 @@ public class graph {
 				System.out.println("\tGrade: " + arrayListStudent.get(i).getListOfAssignments().get(j).getGrade());	
 
 			}
-			
 		}
-		
+		File file = new File("./grades.txt");
+		Scanner fileInput = null;
+		try {
+			fileInput = new Scanner(file);
 
+		} catch (FileNotFoundException e) {
+			System.out.println("File " + file.getName() + " was not found");
+			System.exit(1);
+		}
+		Plot2DPanel plot = new Plot2DPanel();
+		plot.setAxisLabel(0, fileInput.nextLine());
+		plot.setAxisLabel(1, fileInput.nextLine());
+		String store = fileInput.nextLine();
+		while (fileInput.hasNextLine()) {
+			Student student = new Student(fileInput.nextLine());
+			arrayListStudent.add(student);
+			String assignmentText = fileInput.nextLine();
+			String[] split = assignmentText.split("\\s");
+			for(int i = 0; i < split.length; i+=2) {
+					String assignment = split[i];
+					String grade = split[i + 1];
+					int finalGrade = Integer.valueOf(grade);
+					Assignment assignment5 = new Assignment(assignment, finalGrade);
+					
+			}
+		}
+		double[] x = new double[xCor.size()];
+		double[] y = new double[yCor.size()];
+		
+		for (int i = 0; i < xCor.size(); i++) {
+				x[i] = xCor.get(i);
+				y[i] = yCor.get(i);
+			}
+		
+		plot.getAxis(0).setLabelPosition(.50, -.1);
+		// y axis
+		plot.getAxis(1).setLabelPosition(0, 1.05);
+
+		// add a line plot to the PlotPanel
+		plot.addLegend("SOUTH");
+		plot.addLinePlot(store, x, y);
+
+		// put the PlotPanel in a JFrame like a JPanel
+		JFrame frame = new JFrame("Graph");
+		frame.setSize(600, 600);
+		frame.setContentPane(plot);
+		frame.setVisible(true);
 		
 		// create your PlotPanel (you can use it as a JPanel)
 		/*
