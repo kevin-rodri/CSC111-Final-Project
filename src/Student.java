@@ -24,5 +24,7 @@ public class Student {
 		this.listOfAssignments = listOfAssignments;
 	}
 	
-	
+	public void addAssignment(Assignment assignment) {
+		this.listOfAssignments.add(assignment);
+	}
 }

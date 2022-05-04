@@ -1,18 +1,18 @@
 
 public class Assignment {
-	private String assignment;
+	private int assignment;
 	private int grade;
 	
-	public Assignment(String assignment, int grade)
+	public Assignment(int assignment, int grade)
 	{
 		this.assignment = assignment;
 		this.grade = grade;
 	}
-	public String getAssignment() {
+	public int getAssignment() {
 		return assignment;
 	}
 
-	public void setAssignment(String assignment) {
+	public void setAssignment(int assignment) {
 		this.assignment = assignment;
 	}
 	public int getGrade() {

@@ -8,29 +8,10 @@ public class graph {
 	public static void main(String[] args) {
 
 		ArrayListStudent arrayListStudent = new ArrayListStudent();
-		Assignment assignment1 = new Assignment("Lab10", 100);
-		Assignment assignment2 = new Assignment("Lab11", 99);
-		Student kevin = new Student("Kevin");
-		kevin.getListOfAssignments().add(assignment1);
-		kevin.getListOfAssignments().add(assignment2);
-		arrayListStudent.add(kevin);
-
-		Assignment assignmentHarsh = new Assignment("Lab1", 100);
-		Assignment assignmentHarsh2 = new Assignment("Lab2", 99);
-		Student harsh = new Student("Harsh");
-		harsh.getListOfAssignments().add(assignmentHarsh);
-		harsh.getListOfAssignments().add(assignmentHarsh2);
-		arrayListStudent.add(harsh);
-
-		for (int i = 0; i < arrayListStudent.size(); i++) {
-			System.out.println(arrayListStudent.get(i).getName());
-			for (int j = 0; j < arrayListStudent.get(i).getListOfAssignments().size(); j++) {
-				System.out.println("\tName: " + arrayListStudent.get(i).getListOfAssignments().get(j).getAssignment());	
-				System.out.println("\tGrade: " + arrayListStudent.get(i).getListOfAssignments().get(j).getGrade());	
-
-			}
-		}
-		File file = new File("./grades.txt");
+		System.out.println("What is the name of the grade file?");
+		Scanner input = new Scanner(System.in);
+		String fileName = input.nextLine();
+		File file = new File("./" + fileName);
 		Scanner fileInput = null;
 		try {
 			fileInput = new Scanner(file);
@@ -39,73 +20,52 @@ public class graph {
 			System.out.println("File " + file.getName() + " was not found");
 			System.exit(1);
 		}
+		System.out.println("Which student would you like to choose from?");
 		Plot2DPanel plot = new Plot2DPanel();
 		plot.setAxisLabel(0, fileInput.nextLine());
 		plot.setAxisLabel(1, fileInput.nextLine());
-		String store = fileInput.nextLine();
+		int number = 1;
 		while (fileInput.hasNextLine()) {
 			Student student = new Student(fileInput.nextLine());
 			arrayListStudent.add(student);
+			System.out.println(number + ": " + student.getName());
+			number++;
 			String assignmentText = fileInput.nextLine();
-			String[] split = assignmentText.split("\\s");
+			String[] split = assignmentText.split(" ");
 			for(int i = 0; i < split.length; i+=2) {
-					String assignment = split[i];
+					int assignment = Integer.valueOf(split[i]);
 					String grade = split[i + 1];
 					int finalGrade = Integer.valueOf(grade);
 					Assignment assignment5 = new Assignment(assignment, finalGrade);
-					
+					student.addAssignment(assignment5);
 			}
 		}
-		double[] x = new double[xCor.size()];
-		double[] y = new double[yCor.size()];
+		int display = input.nextInt();
 		
-		for (int i = 0; i < xCor.size(); i++) {
-				x[i] = xCor.get(i);
-				y[i] = yCor.get(i);
-			}
 		
-		plot.getAxis(0).setLabelPosition(.50, -.1);
-		// y axis
-		plot.getAxis(1).setLabelPosition(0, 1.05);
+		Student testStudent = arrayListStudent.get(display - 1);
+		double[] x = new double[testStudent.getListOfAssignments().size()];
+		double[] y = new double[testStudent.getListOfAssignments().size()];
+		
+		for (int i = 0; i < testStudent.getListOfAssignments().size(); i++) {
+			x[i] = testStudent.getListOfAssignments().get(i).getAssignment();
+			y[i] = testStudent.getListOfAssignments().get(i).getGrade();
+		}
+	
+	
+	plot.getAxis(0).setLabelPosition(.50, -.1);
+	// y axis
+	plot.getAxis(1).setLabelPosition(0, 1.05);
 
-		// add a line plot to the PlotPanel
-		plot.addLegend("SOUTH");
-		plot.addLinePlot(store, x, y);
+	// add a line plot to the PlotPanel
+	plot.addLegend("SOUTH");
+	plot.addLinePlot(testStudent.getName(), x, y);
 
-		// put the PlotPanel in a JFrame like a JPanel
-		JFrame frame = new JFrame("Graph");
-		frame.setSize(600, 600);
-		frame.setContentPane(plot);
-		frame.setVisible(true);
-		
-		// create your PlotPanel (you can use it as a JPanel)
-		/*
-		 * ArrayListAssignment xNums = new ArrayListAssignment(); ArrayListAssignment
-		 * yNums = new ArrayListAssignment(); Plot2DPanel plot = new Plot2DPanel(); File
-		 * file = new File("./grades.txt"); Scanner fileInput = null; try { fileInput =
-		 * new Scanner(file); plot.setAxisLabel(0, fileInput.nextLine());
-		 * plot.setAxisLabel(1, fileInput.nextLine()); String in = fileInput.nextLine();
-		 * 
-		 * while (fileInput.hasNextDouble()) { double a = fileInput.nextDouble(); double
-		 * b = fileInput.nextDouble(); double c = fileInput.nextDouble(); double d =
-		 * fileInput.nextDouble(); xNums.add(a); xNums.add(b); xNums.add(c);
-		 * xNums.add(d);
-		 * 
-		 * } double[] xNumsArray = new double[xNums.size()]; double[] yNumsArray = new
-		 * double[yNums.size()];
-		 * 
-		 * for (int i = 0; i < xNums.size(); i++) { xNumsArray[i] = xNums.get(i);
-		 * yNumsArray[i] = yNums.get(i); }
-		 * 
-		 * plot.getAxis(0).setLabelPosition(.50, -.1);
-		 * plot.getAxis(1).setLabelPosition(0, 1.05); plot.addLegend("SOUTH");
-		 * plot.addLinePlot(in, xNumsArray, yNumsArray);
-		 * 
-		 * JFrame frame = new JFrame("Graph"); frame.setSize(600, 600);
-		 * frame.setContentPane(plot); frame.setVisible(true);
-		 * 
-		 * } catch (FileNotFoundException e) { // TODO Auto-generated catch block
-		 * e.printStackTrace(); } }
-		 */
+	// put the PlotPanel in a JFrame like a JPanel
+	JFrame frame = new JFrame("Graph");
+	frame.setSize(600, 600);
+	frame.setContentPane(plot);
+	frame.setVisible(true);
+		 
 	}
 }

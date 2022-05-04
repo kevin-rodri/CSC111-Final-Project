@@ -23,8 +23,8 @@ public class ArrayListStudent {
 	}
 
 
-	public Student get(int index) {
-		return array[index];
+	public Student get(int studentName) {
+		return array[studentName];
 	}
 
 	

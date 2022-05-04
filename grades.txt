@@ -1,13 +1,12 @@
 Tests
-Tests Average
-Harsh Test4 70
-Kevin 
-Test11 90 Test2 100 Test3 80 Test4 100 
-Matt 
-Test1 60 Test2 70 Test3 80 Test4 100
-Nick 
-Test1 80 Test2 70 Test3 90 Test4 100
-Alex 
-Test1 70 Test2 40 Test3 60 Test4 90
-
-
+Tests Scores
+Harsh
+1 30 2 90 3 80
+Kevin
+1 90 2 100 3 80 4 100
+Matt
+1 60 2 70 3 80 4 100
+Nick
+1 80 2 70 3 90 4 100
+Alex
+1 70 2 40 3 60 4 90
