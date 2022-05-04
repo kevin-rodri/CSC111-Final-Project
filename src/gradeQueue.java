@@ -1,11 +1,10 @@
-import org.w3c.dom.Node;
 
 public class gradeQueue {
 	private int numberOfItems;
 	private Node head;
 	private Node tail;
 	
-	public void add(String item) {
+	public void add(Assignment item) {
 		Node newNode = new Node(item);
 		if(head == null) {
 			head = newNode;
@@ -19,18 +18,18 @@ public class gradeQueue {
 		}
 	}
 	
-	public String peek() {
+	public Assignment peek() {
 		return head.getItem();
 	}
-	public String poll() {
+	public Assignment poll() {
 		if(head != null) {
-			String temp = head.getItem();
+			Assignment temp = head.getItem();
 			head = head.getNext();
 			numberOfItems--;
 			return temp;
 		}
 		else {
-			return "";
+			return null;
 		}
 	}
 	public int size() {
