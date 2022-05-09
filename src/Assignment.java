@@ -17,7 +17,9 @@ public class Assignment {
 	public int getAssignment() {
 		return assignment;
 	}
-
+	public String getAssignmentName() {
+		return name;
+	}
 	public void setAssignment(int assignment) {
 		this.assignment = assignment;
 	}

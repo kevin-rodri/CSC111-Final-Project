@@ -1,11 +1,13 @@
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.util.Scanner;
 
 public class grading {
 	public static void main(String args[]) {
 		gradeQueue grades = new gradeQueue(); 
 		ArrayListStudent arrayListStudent = new ArrayListStudent();
+		ArrayListAssignment assignments = new ArrayListAssignment();
 		System.out.println("What is the name of the file you want to grade?");
 		Scanner input = new Scanner(System.in);
 		String fileName = input.nextLine();
@@ -22,11 +24,30 @@ public class grading {
 			Assignment assignment = new Assignment(fileInput.nextLine());
 			grades.add(assignment);
 		}
-		for(int i = 0; i < grades.size(); i++) {
-			Assignment print = grades.getAssignmentName();
-			System.out.println(print);
+		int gradeList;
+		while (grades.size() != 0) {
+			Assignment print = grades.poll();
+			System.out.println(print.getAssignmentName());
+			System.out.println("which grade would you like to give this assignment?");
+			gradeList = input.nextInt();
+			print.setGrade(gradeList);
+			assignments.add(print);
 		}
+		System.out.println("You have no more assignments to grade!!");
+		try (PrintWriter printWriter = new PrintWriter(new File(file.getName())))
+		{
+			for (int i = 0; i < assignments.size() ; i++) {
+				printWriter.println(assignments.get(i).getAssignmentName());	
+				printWriter.println(assignments.get(i).getGrade());	
+			}
+		}
+		catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			System.out.println("error");
+			e.printStackTrace();
+			System.exit(1);
 		
+	}
 		
 	}
 }

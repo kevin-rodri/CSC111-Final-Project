@@ -20,7 +20,9 @@ public class graph {
 			System.out.println("File " + file.getName() + " was not found");
 			System.exit(1);
 		}
-		System.out.println("Which student would you like to choose from?");
+		int quit = 0;
+
+		System.out.println("Which student would you like to choose from?, Press 0 to quit.");
 		Plot2DPanel plot = new Plot2DPanel();
 		plot.setAxisLabel(0, fileInput.nextLine());
 		plot.setAxisLabel(1, fileInput.nextLine());
@@ -40,8 +42,12 @@ public class graph {
 					student.addAssignment(assignment5);
 			}
 		}
+		while(quit == 0) {
 		int display = input.nextInt();
-		
+		if(display == 0) {
+			quit += 1;
+			System.exit(1);
+		}
 		
 		Student testStudent = arrayListStudent.get(display - 1);
 		double[] x = new double[testStudent.getListOfAssignments().size()];
@@ -68,4 +74,5 @@ public class graph {
 	frame.setVisible(true);
 		 
 	}
+}
 }
