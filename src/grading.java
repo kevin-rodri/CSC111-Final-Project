@@ -22,10 +22,7 @@ public class grading {
 			Assignment assignment = new Assignment(fileInput.nextLine());
 			grades.add(assignment);
 		}
-		for(int i = 0; i < grades.size(); i++) {
-			Assignment print = grades.getAssignmentName();
-			System.out.println(print);
-		}
+		
 		
 		
 	}
