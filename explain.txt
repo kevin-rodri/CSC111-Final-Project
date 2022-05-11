@@ -1,0 +1,11 @@
+Designed by Kevin Rodriguez and Harsh Gandhi 
+
+To see the implementation of arrayLists and queues, press 1 in the main class. You will be asked to input a file (just type grade.txt)  and input as many grades until you are told there is no assignments left to grade.To double check it works, see if any numbers appear above the assignment name 
+Example: Assignment1
+			100 (hopefully that makes sense)
+
+To see the implementation of arrayLists, press 2 in the main class. You will be asked to input a file (just type grades.txt) and press any number to see the results of the student grades you would like to see. Press 0 to quit.
+
+Make sure the jar files in your project folder. 
+
+Thank you Zach for all of the lecture and help you have provided this semester! 

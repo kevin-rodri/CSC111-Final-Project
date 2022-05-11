@@ -1,14 +1,20 @@
-
+/*
+ * Class to store a list of assignments 
+ * @author Kevin Rodriguez
+ */
 public class ArrayListAssignment  {
 
+	// instance of an array of assignments to do an array list implementation
 	private Assignment[] array;
+	// will keep track of items in array 
 	private int numberOfItems;
 
+	// default constructor to be instantiated in a separate class 
 	public ArrayListAssignment() {
 		array = new Assignment[5];
 	}
 
-	
+	// add an assignment to the arraylist and will expand the size if needed 
 	public void add(Assignment item) {
 		if (numberOfItems < array.length) {
 			array[numberOfItems++] = item;
@@ -24,15 +30,17 @@ public class ArrayListAssignment  {
 	}
 
 
+	// get an assignment at a specific index 
 	public Assignment get(int index) {
 		return array[index];
 	}
 
-	
+	// setting a specific assignment at a certain index
 	public void set(int index, Assignment item) {
 		array[index] = item;
 	}
-
+	
+	// removes an assignment from the arrayList 
 	public void remove(int index) {
 		for (int i = index; i < numberOfItems; i++) {
 			array[i] = array[i + 1];
@@ -40,12 +48,12 @@ public class ArrayListAssignment  {
 		numberOfItems--;
 	}
 
-	
+	// will return the size of the arrayList 
 	public int size() {
 		return numberOfItems;
 	}
 
-	
+	// will neatly print out the entire arraylist of assignments
 	public void print() {
 		if (numberOfItems == 0) {
 			System.out.print("[]");

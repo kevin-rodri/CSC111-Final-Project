@@ -1,12 +1,6 @@
 Assignment1
-89
 Test1
-90
 Assignment2
-100
 Test2
-90
 Assignment3
-100
 Test3
-90
